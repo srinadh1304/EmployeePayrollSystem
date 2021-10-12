@@ -1,5 +1,3 @@
-
-  
 class EmployeePayrollData {
     id;
     name;
@@ -49,5 +47,15 @@ set startDate(startDate) {
         this._startDate = startDate;
     else throw 'Invalid date';
 }
+
+toString() {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const empDate =
+      this.startDate === undefined
+        ? 'undefined'
+        : this.startDate.toLocaleDateString('en-US', options);
+    return (
+      'id=' +this.id +', name=' +this.name +', salary=' +this.salary +', gender=' +this.gender +', start date=' +empDate);
+  }
 
 }
