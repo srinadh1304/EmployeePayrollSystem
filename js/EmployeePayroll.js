@@ -1,3 +1,5 @@
+
+  
 class EmployeePayrollData {
     id;
     name;
@@ -39,4 +41,13 @@ set salary(salary) {
     else
         throw "Salary is incorrect";
     }
+get startDate() {
+    return this._startDate;
+}
+set startDate(startDate) {
+    if (startDate <= new Date() && Math.abs(startDate - new Date() < 30))
+        this._startDate = startDate;
+    else throw 'Invalid date';
+}
+
 }
