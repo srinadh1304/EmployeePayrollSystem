@@ -1,61 +1,70 @@
+let employeeArray = [];
+
 class EmployeePayrollData {
-    id;
-    name;
-    salary;
-    gender;
-    startDate;
 
-
-constructor(...params) {
-    this.id = params[0];
-    this.name = params[1];
-    this.salary = params[2];
-    this.gender = params[3];
-    this.startDate = params[4];
-}
-
-get name() {
-    return this._name;
-}
-set name(name) {
-    let nameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$');
-    if (nameRegex.test(name)) this._name = name;
-    else throw 'Name is Incorrect';
-}
-
-get id() { return this._id; }
-set id(id) {
-    let regxId = RegExp('^[1-9][0-9]*$');
-    if (regxId.test(id))
-        this._id = id;
-    else
-        throw "Id is incorrect";
-}
-get salary() { return this._salary; }
-set salary(salary) {
-    let regxSalary = RegExp('^[1-9][0-9]*$');
-    if (regxSalary.test(salary))
-       this._salary = salary;
-    else
-        throw "Salary is incorrect";
+    constructor(...params) {
+        this.name = params[0];
+        this.salary = params[1];
+        this.gender = params[2];
+        this.startDate = params[3];
+        this.departments = params[4];
+        this.notes = params[5];
     }
-get startDate() {
-    return this._startDate;
-}
-set startDate(startDate) {
-    if (startDate <= new Date() && Math.abs(startDate - new Date() < 30))
-        this._startDate = startDate;
-    else throw 'Invalid date';
+    get name() { return this._name; }
+    set name(name) {
+        this._name = name;
+    }
+    get salary() { return this._salary; }
+    set salary(salary) {
+        this._salary = salary;
+    }
+    get gender() { return this._gender; }
+    set gender(gender) {
+        this._gender = gender;
+    }
+    get startDate() { return this._startDate; }
+    set startDate(startDate) {
+        this._startDate = startDate; 
+    }
+    get departments() { return this._departments}
+    set departments(departments){
+        this._departments = departments;
+    }
+    get notes() { return this._notes}
+    set notes(notes) {
+        this._notes = notes;
+    }
+
+    toString() {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const employeeDate = this.startDate == undefined ? "undefined" :
+        this.startDate.toLocaleDateString("en-us", options);
+        return "name="+ this.name +", salary="+ this.salary+", gender="+ this.gender+", start date="+ employeeDate+", department="+this.departments+", notes="+this.notes;
+    }
 }
 
-toString() {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const empDate =
-      this.startDate === undefined
-        ? 'undefined'
-        : this.startDate.toLocaleDateString('en-US', options);
-    return (
-      'id=' +this.id +', name=' +this.name +', salary=' +this.salary +', gender=' +this.gender +', start date=' +empDate);
-  }
+function save(){
+    const name = document.querySelector("#name");
+    let departments = new Array();
+    let markedCheckbox = document.getElementsByName('department');  
+    for (var checkbox of markedCheckbox) {  
+      if (checkbox.checked)  
+        departments.push(checkbox.value);  
+    } 
+    let markedRadioButton = document.getElementsByName('gender');
+    let gender;
+    for (var radiobutton of markedRadioButton) {  
+        if (radiobutton.checked)  
+          gender = radiobutton.value;  
+    }
+    const salary = document.getElementById("salary");
+    const day = document.querySelector('#day');
+    const month = document.querySelector('#month');
+    const year = document.querySelector('#year');
+    const date = new Date(day.value+"/"+month.value+"/"+year.value);
+    const notes = document.querySelector('#notes'); 
 
+    employeeArray.push(new EmployeePayrollData(name.value,salary.value,gender,date,departments,notes.value));
+
+    alert("Saved successfully: "+employeeArray);
 }
