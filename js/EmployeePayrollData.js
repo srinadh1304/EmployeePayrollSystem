@@ -32,11 +32,10 @@ class EmployeePayrollData {
     }
     get startDate() { return this._startDate; }
     set startDate(startDate) {
-        var priorDate = new Date();
-        priorDate.setDate(priorDate.getDate() - 30)
-        if(new Date() >= startDate && startDate >= priorDate) 
+        let days = Math.abs(startDate - new Date())/(1000*60*60*24);
+        if(startDate <= new Date() &&  days < 30)
             this._startDate = startDate;
-        else throw 'Invalid date!! '; 
+        else throw 'Invalid date!! It can not be a future date and should be within 30 days of joining'; 
     }
 
     get departments() { return this._departments}
@@ -53,6 +52,6 @@ class EmployeePayrollData {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const employeeDate = this.startDate == undefined ? "undefined" :
         this.startDate.toLocaleDateString("en-us", options);
-        return "name="+ this.name +", ProfilePic="+ this.profilePic+", salary="+ this.salary+", gender="+ this.gender+", start date="+ employeeDate+", department="+this.departments+", notes="+this.notes+"\n";
+        return "id= "+this.id+", name="+ this.name +", ProfilePic="+ this.profilePic+", salary="+ this.salary+", gender="+ this.gender+", start date="+ employeeDate+", department="+this.departments+", notes="+this.notes+"\n";
     }
 }
