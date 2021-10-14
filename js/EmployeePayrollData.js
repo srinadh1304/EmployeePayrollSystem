@@ -1,5 +1,6 @@
 class EmployeePayrollData {
 
+    //getter and setter
     get id() { return this._id; }
     set id(id){
         this._id = id;
@@ -35,7 +36,7 @@ class EmployeePayrollData {
         priorDate.setDate(priorDate.getDate() - 30)
         if(new Date() >= startDate && startDate >= priorDate) 
             this._startDate = startDate;
-        else throw 'Invalid date!! It can not be a future date and should be within 30 days of joining'; 
+        else throw 'Invalid date!! '; 
     }
 
     get departments() { return this._departments}

@@ -1,5 +1,5 @@
 let employeePayrollList;
-window.addEventListener('DOMContentLoaded',(event) => {
+window.addEventListener('DOMContentLoaded',() => {
     employeePayrollList = getEmployeePayrollDataFromStorage();
     document.querySelector(".emp-count").textContent = employeePayrollList.length;
     createInnerHtml();
@@ -43,4 +43,4 @@ const getDeptHtml = (deptList) => {
         deptHtml = `${deptHtml} <div class='dept-label'>${dept}</div>`
     }
     return deptHtml;
-}
+}   
