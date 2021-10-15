@@ -37,6 +37,4 @@ window.addEventListener('DOMContentLoaded',(event) => {
     salary.addEventListener('input', function(){
     output.textContent = salary.value;
     });
-
- 
 });
