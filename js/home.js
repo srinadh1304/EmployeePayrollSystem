@@ -48,7 +48,7 @@ const createInnerHtml = () => {
             <td>${stringifyDate(empPayrollData._startDate)}</td>
             <td>
                 <img id="${empPayrollData.id}" onclick="remove(this)" alt="delete" src="../assets/icons/delete-black-18dp.svg">
-                <img id="${empPayrollData.id}" alt="edit" onclick="update(this)" src="../assets/icons/create-black-18dp.svg">
+                <img id="${empPayrollData.id}" alt="edit" onclick="update(this)" style="padding-left:20px;" src="../assets/icons/create-black-18dp.svg">
             </td>
         </tr>
         `;
@@ -70,9 +70,19 @@ const remove = (node) => {
     const index = empPayrollList.map(empData => empData.id)
         .indexOf(empPayrollData.id);
     empPayrollList.splice(index, 1);
-    localStorage.setItem("EmployeePayrollList", JSON.stringify(empPayrollList));
-    document.querySelector(".emp-count").textContent = empPayrollList.length;
-    createInnerHtml();
+    if (site_properties.use_local_storage.match("true")) {
+        localStorage.setItem("EmployeePayrollList", JSON.stringify(empPayrollList));
+        createInnerHtml();
+    } else {
+        const deleteUrl = site_properties.server_url + empPayrollData.id.toString();
+        makeServiceCall("DELETE", deleteUrl, false)
+            .then(responseText => {
+                createInnerHtml();
+            })
+            .catch(error => {
+                console.log("DELETE Error Status: " + JSON.stringify(error));
+            })
+    }
 }
 
 const update = (node) => {
