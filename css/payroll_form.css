@@ -1,6 +1,7 @@
 body {
     margin: 0;
     height: 100%;
+    background-color: #f7f7f7;
 }
 
 .header {
@@ -16,7 +17,7 @@ body {
     border: 0px solid green;
 }
 
-.logo-content{
+.logo-content {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -24,19 +25,27 @@ body {
     width: 80%;
 }
 
-.logo-content-img { border: solid 0px #42515f;}
+.logo-content-img {
+    border: solid 0px #42515f;
+}
 
 .emp-text {
-    font: normal normal bold 20px/25px Montserrat;
+    margin-left: 5px;
+    font: normal normal bold 18px/20px Montserrat;
     font-family: "Montserrat", sans-serif;
     letter-spacing: 0px;
     color: #82a70c;
     text-transform: capitalize;
 }
 
-.emp-payroll { color: #42515f; }
+.emp-payroll {
+    color: #42515f;
+}
 
-* { box-sizing: border-box;}
+* {
+    box-sizing: border-box;
+}
+
 .form-content {
     min-height: calc(100% - 80px);
     background-color: #f7f7f7;
@@ -54,7 +63,6 @@ body {
     border: 1px solid #f5f5f5;
     border-radius: 8px;
     opacity: 1;
-    margin: 50px;
 }
 
 .form-head {
@@ -69,7 +77,7 @@ body {
 .row-content {
     display: flex;
     flex-direction: row;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     align-items: center;
     border: 0px solid green;
 }
@@ -84,7 +92,6 @@ label {
 }
 
 .text {
-    font: normal normal normal 18px/24px Roboto;
     font-size: 16px;
     color: #42515f;
     opacity: 1;
@@ -98,15 +105,16 @@ label {
     border-radius: 4px;
     resize: vertical;
 }
+
 .profile-radio-content {
     display: flex;
     flex-direction: row;
 }
 
-.profile-radio-content > label {
+.profile-radio-content>label {
     display: flex;
-    flex-direction:row;
-    align-items:center;
+    flex-direction: row;
+    align-items: center;
 }
 
 .profile {
@@ -114,16 +122,17 @@ label {
     border-radius: 50%;
     margin-left: 12px;
 }
-.select-div{
+
+.select-div {
     display: flex;
-    width: 50%;
+    width: 70%;
 }
 
 select {
-    margin-left: 20px;
+    margin-right: 20px;
     padding: 12px;
-    border: 1px solid #BDBDBD;
-    border-radius: 3px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     display: inline;
     width: 100%;
     font: normal normal normal 16px Roboto;
@@ -132,6 +141,7 @@ select {
     background-color: transparent;
     resize: vertical;
 }
+
 .buttonParent {
     display: flex;
     margin-bottom: 10px;
@@ -141,12 +151,12 @@ select {
 
 .button {
     font-size: 20px;
-    font-family:Roboto;
-    letter-spacing:0px;
+    font-family: Roboto;
+    letter-spacing: 0px;
     color: #42515f;
     opacity: 1;
     background: transparent;
-    border:none;
+    border: none;
     font-weight: 400;
     min-width: 140px;
     padding: 7px 7px;
@@ -155,60 +165,29 @@ select {
 }
 
 .submitButton {
-    border:none;
+    /* border:none; */
     background-color: #f5f5f5;
     margin-right: 30px;
-    background: #E2E2E2 0% 0% no-repeat padding-box;
-    border: 1px solid #969696;
-    border-radius: 5px;
-    opacity: 1;
 }
-.submitButton:hover {
-    background: #82A70C 0% 0% no-repeat padding-box;
-    color: #FFFFFF;
-}
+
 .cancelButton {
     text-decoration: none;
     text-align: center;
-    border: 1px solid #969696;
-    background: #E2E2E2 0% 0% no-repeat padding-box;
-    border-radius: 5px;
-    opacity: 1;
-}
-.cancelButton:hover{
-    background: #707070 0% 0% no-repeat padding-box;
-    color: #FFFFFF;
 }
 
-.resetButton{
-    background: #E2E2E2 0% 0% no-repeat padding-box;
-    border: 1px solid #969696;
-    border-radius: 5px;
-    opacity: 1;
-} 
-.resetButton:hover{
-    background: #707070 0% 0% no-repeat padding-box;
-    color: #FFFFFF;
-}
-error-output {
-    margin-left: 10px;
-    font-size: 12px;
-    font-style: italic;
-    color: red;
-}
-@media only screen and (max-width: 960px){
+@media only screen and (max-width: 960px) {
     .cancelButton {
         margin-left: 0px;
     }
-    .form{
+    .form {
         width: 85%;
         padding: 44px 20px;
     }
 }
 
 @media only screen and (max-width: 600px) {
-    .form{
-        margin-top : 10px;
+    .form {
+        margin-top: 10px;
     }
     .row {
         flex-direction: column;
@@ -217,31 +196,77 @@ error-output {
         justify-content: flex-start;
     }
     .profile-radio-button {
-        flex-flow:wrap;
-    }
-    .profile-radio-content{
         flex-flow: wrap;
     }
-    .row-content{
+    .profile-radio-content {
         flex-flow: wrap;
     }
     .submit-reset {
         width: 100%;
         display: flex;
-        flex-grow: 1;
+        flex-grow: 0;
         flex-direction: row-reverse;
         justify-content: space-between;
         margin-bottom: 20px;
     }
-    .submitButton{
-        margin:0;
+    .submitButton {
+        margin: 0;
     }
     .buttonParent {
         flex-direction: column-reverse;
         align-items: flex-start;
     }
-    .select-div{
+    .select-div {
         display: block;
         width: 100%;
     }
+}
+
+.cancelButton {
+    background: rgb(233, 60, 60);
+    color: white;
+    border-color: black;
+    border-radius: 4px;
+}
+
+.cancelButton:hover {
+    background-color: rgb(167, 12, 12);
+}
+
+.submitButton {
+    background-color: green;
+    color: white;
+    border-color: black;
+    border-radius: 4px;
+}
+
+.submitButton:hover {
+    background-color: #074e0a;
+}
+
+.resetButton {
+    background-color: rgb(64, 64, 243);
+    color: white;
+    border-color: black;
+    border-radius: 4px;
+}
+
+.resetButton:hover {
+    background-color: rgb(14, 14, 104);
+}
+
+.button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+error-output {
+    margin-left: 10px;
+    font-size: 12px;
+    font-style: italic;
+    color: red;
+}
+
+.textarea {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
